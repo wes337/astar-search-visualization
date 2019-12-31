@@ -10,8 +10,8 @@ function GridCanvas(props) {
   const [startNodeLocation, setStartNodeLocation] = useState(null)
   const [endNodeLocation, setEndNodeLocation] = useState(null)
   const [clickReset, setClickReset] = useState(false)
-  const canvasHeight = 640
-  const canvasWidth = 640
+  const canvasHeight = (nodeSize * height) + (2 * nodeStroke)
+  const canvasWidth = (nodeSize * width) + (2 * nodeStroke)
 
   const resetGrid = () => {
     setStartNodeLocation(null)

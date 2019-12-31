@@ -1,16 +1,7 @@
-.grid-canvas-header {
-  height: 40px;
-}
-
 .grid-canvas-header > p {
   font-size: calc(2px + 2vmin);
   padding: 0;
   margin: 0;
-}
-
-.grid-canvas {
-  max-height: 100vh;
-  max-width: 100vw;
 }
 
 .grid-canvas-footer {
@@ -23,7 +14,6 @@
 
 .grid-canvas-controls {
   margin-left: auto;
-  margin-right: 0.75rem;
 }
 
 .grid-canvas-controls button {
