@@ -9,6 +9,7 @@ function GridCanvas(props) {
   const [grid, setGrid] = useState(new Grid())
   const [startNodeLocation, setStartNodeLocation] = useState(null)
   const [endNodeLocation, setEndNodeLocation] = useState(null)
+  const [clickReset, setClickReset] = useState(false)
   const canvasHeight = 640
   const canvasWidth = 640
 
@@ -45,6 +46,7 @@ function GridCanvas(props) {
         animatePath([startNode], timeoutIndex, 15, 'blue'),
         animatePath([endNode], timeoutIndex, 15, 'red')
       ]))
+      .then(() => setClickReset(true))
   }
 
   useEffect(() => {
@@ -56,6 +58,9 @@ function GridCanvas(props) {
   }, [grid])
 
   const handleClick = (event) => {
+    if (clickReset) {
+      return resetGrid()
+    }
     const canvas = gridCanvas.current
     const canvasLeft = canvas.offsetLeft
     const canvasTop = canvas.offsetTop
@@ -68,22 +73,41 @@ function GridCanvas(props) {
     if (gridNode) {
       if ((!grid.startNode && !grid.endNode)) {
         grid.setStartNode(gridNode)
-        setStartNodeLocation(gridNode.location())
+        return setStartNodeLocation(gridNode.location())
       } else if (grid.startNode && !grid.endNode) {
         grid.setEndNode(gridNode)
-        setEndNodeLocation(gridNode.location())
+        return setEndNodeLocation(gridNode.location())
       } else if (grid.startNode && grid.endNode) {
-        gridNode.setWalkable(!gridNode.walkable)
-      } else {
-        resetGrid()
+        return gridNode.setWalkable(!gridNode.walkable)
       }
-    } else {
-      event.preventDefault()
     }
+    return event.preventDefault()
+  }
+
+  const RenderHeaderText = () => {
+    if (!startNodeLocation) {
+      return <p>Click a node to set the <span style={{ color: 'blue' }}> START</span> position.</p>
+    }
+    if (!endNodeLocation) {
+      return <p>Click a node to set the <span style={{ color: 'red' }}> END</span> position.</p>
+    }
+    if (clickReset) {
+      return (
+        <p>Drawing path from
+          <span style={{ color: 'blue' }}> {startNodeLocation}</span> to
+          <span style={{ color: 'red' }}> {endNodeLocation}</span>
+          <em> (Click anywhere to reset)</em>
+        </p>
+      )
+    }
+    return <p>Click a node to create/remove a <span style={{ color: 'black' }}> WALL </span> obstacle.</p>
   }
 
   return (
     <div className="grid-canvas">
+      <div className="grid-canvas-header">
+        <RenderHeaderText />
+      </div>
       <canvas className="grid" height={canvasHeight} width={canvasWidth} onClick={handleClick} ref={gridCanvas} />
       <div className="grid-canvas-footer">
         <div className="grid-canvas-labels">
