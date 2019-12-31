@@ -1,0 +1,24 @@
+.grid-canvas {
+  max-height: 100vh;
+  max-width: 100vw;
+}
+
+.grid-canvas-footer {
+  display: flex;
+}
+
+.grid-canvas-labels {
+  text-align: left;
+}
+
+.grid-canvas-controls {
+  margin-left: auto;
+  margin-right: 0.75rem;
+}
+
+.grid-canvas-controls button {
+  color: #282c34;
+  border-color: #282c34;
+  padding: 1rem;
+  background-color: #61dafb;
+}
