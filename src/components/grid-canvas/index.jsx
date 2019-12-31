@@ -10,10 +10,13 @@ function GridCanvas(props) {
   const [startNodeLocation, setStartNodeLocation] = useState(null)
   const [endNodeLocation, setEndNodeLocation] = useState(null)
   const [clickReset, setClickReset] = useState(false)
+  const [animationSpeed, setAnimationSpeed] = useState(5)
+
   const canvasHeight = (nodeSize * height) + (2 * nodeStroke)
   const canvasWidth = (nodeSize * width) + (2 * nodeStroke)
 
   const resetGrid = () => {
+    setClickReset(false)
     setStartNodeLocation(null)
     setEndNodeLocation(null)
     const canvas = gridCanvas.current
@@ -22,11 +25,11 @@ function GridCanvas(props) {
     setGrid(newGrid)
   }
 
-  const animatePath = (path, timeoutIndex, speed, color) => {
+  const animatePath = (path, timeoutIndex, color) => {
     let newTimeoutIndex = timeoutIndex
     path.forEach((node) => {
       newTimeoutIndex++
-      setTimeout(() => node.fill(color), newTimeoutIndex * speed)
+      setTimeout(() => node.fill(color), (newTimeoutIndex * animationSpeed))
     })
     return Promise.resolve(newTimeoutIndex)
   }
@@ -40,11 +43,11 @@ function GridCanvas(props) {
       }
       return -1
     })
-    animatePath(openClosedList, timeoutIndex, 15, 'lightgreen')
-      .then(timeoutIndex => animatePath(path, timeoutIndex, 15, 'green'))
+    animatePath(openClosedList, timeoutIndex, 'lightgreen')
+      .then(timeoutIndex => animatePath(path, timeoutIndex, 'green'))
       .then(timeoutIndex => Promise.all([
-        animatePath([startNode], timeoutIndex, 15, 'blue'),
-        animatePath([endNode], timeoutIndex, 15, 'red')
+        animatePath([startNode], timeoutIndex, 'blue'),
+        animatePath([endNode], timeoutIndex, 'red')
       ]))
       .then(() => setClickReset(true))
   }
