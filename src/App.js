@@ -1,11 +1,11 @@
 import React from 'react'
 import GridCanvas from './components/grid-canvas'
-import './App.css'
+import './app.css'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app-header">
         <p>A* Search Algorithm</p>
       </header>
       <div className="grid-container">

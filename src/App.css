@@ -1,4 +1,4 @@
-.App {
+.app {
   min-height: 100vh;
   background-color: #282c34;
   display: flex;
@@ -11,12 +11,8 @@
   padding: 0;
 }
 
-.App-header > * {
+.app-header > * {
   margin: 0;
   padding: 0;
   font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: #61dafb;
 }
