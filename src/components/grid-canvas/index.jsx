@@ -89,21 +89,21 @@ function GridCanvas(props) {
 
   const RenderHeaderText = () => {
     if (!startNodeLocation) {
-      return <p>Click a node to set the <span style={{ color: 'blue' }}> START</span> position.</p>
+      return <p>Click a node to set the <span style={{ color: 'blue', backgroundColor: 'azure', padding: '0 0.2rem', borderRadius: '0.2rem' }}>START</span> position.</p>
     }
     if (!endNodeLocation) {
-      return <p>Click a node to set the <span style={{ color: 'red' }}> END</span> position.</p>
+      return <p>Click a node to set the <span style={{ color: 'red', backgroundColor: 'azure', padding: '0 0.2rem', borderRadius: '0.2rem' }}>END</span> position.</p>
     }
     if (clickReset) {
       return (
-        <p>Drawing path from
-          <span style={{ color: 'blue' }}> {startNodeLocation}</span> to
-          <span style={{ color: 'red' }}> {endNodeLocation}</span>
-          <em> (Click anywhere to reset)</em>
+        <p>Drawing shortest path from&nbsp;
+          <span style={{ color: 'blue', backgroundColor: 'azure', padding: '0 0.2rem', borderRadius: '0.2rem' }}>{startNodeLocation}</span> to&nbsp;
+          <span style={{ color: 'red', backgroundColor: 'azure', padding: '0 0.2rem', borderRadius: '0.2rem' }}>{endNodeLocation}</span>&nbsp;
+          <em style={{ color: 'lightgray', fontWeight: 300 }}>(Click anywhere to reset)</em>
         </p>
       )
     }
-    return <p>Click a node to create/remove a <span style={{ color: 'black' }}> WALL </span> obstacle.</p>
+    return <p>Click nodes to create/remove <span style={{ color: 'black', backgroundColor: 'azure', padding: '0 0.2rem', borderRadius: '0.2rem' }}>WALL</span> obstacles.</p>
   }
 
   return (
@@ -125,6 +125,21 @@ function GridCanvas(props) {
               ? `End Node: ${endNodeLocation}`
               : 'End node is not set. Click a node to set it.'
             }
+          </div>
+        </div>
+        <div className="grid-canvas-speed">
+          <p>Animation speed:</p>
+          <div>
+            <input type="radio" id="slow" name="speed" onClick={() => setAnimationSpeed(25)} />
+            <label for="slow">Slow</label>
+          </div>
+          <div>
+            <input type="radio" id="normal" name="speed" checked onClick={() => setAnimationSpeed(5)} />
+            <label for="normal">Normal</label>
+          </div>
+          <div>
+            <input type="radio" id="fast" name="speed" onClick={() => setAnimationSpeed(1)} />
+            <label for="fast">Fast</label>
           </div>
         </div>
         <div className="grid-canvas-controls">
