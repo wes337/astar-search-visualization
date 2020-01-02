@@ -11,7 +11,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "3.3.0"
   },
-  "homepage": "https://github.com/wes337/astar-search-visualization",
+  "homepage": "https://wes337.github.io/astar-search-visualization/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
