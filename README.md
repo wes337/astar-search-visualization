@@ -3,6 +3,8 @@
 
 A visual way to see how the [A* search algorithm](https://en.wikipedia.org/wiki/A*_search_algorithm) works in pathfinding.
 
+[Try it yourself!](https://wes337.github.io/astar-search-visualization/)
+
 ## Getting Started
 
 Download/clone this repo, then run:
