@@ -1,5 +1,4 @@
 .grid-canvas-header > p {
-  font-size: calc(2px + 2vmin);
   padding: 0;
   margin: 0.2rem;
 }
@@ -35,4 +34,25 @@
   border-color: #282c34;
   padding: 1rem;
   background-color: #61dafb;
+}
+
+@media (max-width: 576px) {
+  .grid-canvas-footer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .grid-canvas-controls button {
+    padding: 5px;
+  }
+
+  .grid-canvas-speed {
+    display: inline-flex;
+    margin: 5px;
+  }
+
+  .grid-canvas-labels, .grid-canvas-speed, .grid-canvas-controls {
+    margin: auto;
+    font-size: 0.8rem;
+  }
 }

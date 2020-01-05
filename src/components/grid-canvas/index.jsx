@@ -58,7 +58,7 @@ function GridCanvas(props) {
 
   useLayoutEffect(() => {
     grid.draw()
-  }, [grid])
+  }, [grid, height, width])
 
   const handleClick = (event) => {
     if (clickReset) {
@@ -117,29 +117,29 @@ function GridCanvas(props) {
           <div id="start-node-label">
             {startNodeLocation
               ? `Start Node: ${startNodeLocation}`
-              : 'Start node is not set. Click a node to set it.'
+              : 'Start node is not set.'
             }
           </div>
           <div id="end-node-label">
             {endNodeLocation
               ? `End Node: ${endNodeLocation}`
-              : 'End node is not set. Click a node to set it.'
+              : 'End node is not set.'
             }
           </div>
         </div>
         <div className="grid-canvas-speed">
           <p>Animation speed:</p>
           <div>
-            <input type="radio" id="slow" name="speed" onClick={() => setAnimationSpeed(25)} />
-            <label for="slow">Slow</label>
+            <input type="radio" id="slow" name="speed" onChange={() => setAnimationSpeed(25)} />
+            <label htmlFor="slow">Slow</label>
           </div>
           <div>
-            <input type="radio" id="normal" name="speed" checked onClick={() => setAnimationSpeed(5)} />
-            <label for="normal">Normal</label>
+            <input type="radio" id="normal" name="speed" checked onChange={() => setAnimationSpeed(5)} />
+            <label htmlFor="normal">Normal</label>
           </div>
           <div>
-            <input type="radio" id="fast" name="speed" onClick={() => setAnimationSpeed(1)} />
-            <label for="fast">Fast</label>
+            <input type="radio" id="fast" name="speed" onChange={() => setAnimationSpeed(1)} />
+            <label htmlFor="fast">Fast</label>
           </div>
         </div>
         <div className="grid-canvas-controls">
